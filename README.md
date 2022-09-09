@@ -14,6 +14,12 @@ The pieces of this service consist of:
   
 ![Screen Shot 2022-09-07 at 11 14 28 PM](https://user-images.githubusercontent.com/16529164/189026105-71b36177-0935-491f-90c3-8abd71f37a1f.png)
 
+### Example use-cases:
+- providing an interface to schedule sending emails every Monday
+- call a heavy back-end service without waiting via queueing up the job in Cog
+- provide an HTTP endpoint to expose custom on-the-fly scheduling by users
+- easily save, view, edit, and delete the functionality for customer service 
+
 # API Routes
 | Method | Route      | Description |
 |-----------| ----------- | ----------- |
