@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "sourceMap": true,
+    "outDir": "dist",
+    "module": "commonjs",
+    "lib": ["esnext"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": [
+      "node", "jest"
+    ],
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+  },
+  "include": ["src", "test"]
+}

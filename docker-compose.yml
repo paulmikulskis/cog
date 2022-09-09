@@ -1,0 +1,74 @@
+version: "3.4"
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  minio_data:
+    driver: local
+services:
+  api:
+    build: .
+    user: root
+    command: "yarn start:api"
+    ports:
+      - "15000:15000"
+    expose:
+      - 15000
+    volumes:
+      - .:/apps
+      - /apps/api/node_modules
+    depends_on:
+      - redis
+    links:
+      - redis
+    env_file:
+      - .env
+    environment:
+      - ENVIRONMENT=development
+  workers:
+    build: .
+    user: root
+    volumes:
+      - .:/apps
+    command: "yarn start:all"
+    depends_on:
+      - redis
+    links:
+      - redis
+    env_file:
+      - .env
+    environment:
+      - ENVIRONMENT=development
+
+  redis:
+    image: redis:6.2.3-alpine
+    hostname: redis
+    command: ["redis-server", "--appendonly", "yes", "--port", "6380"]
+    expose:
+      - 6380
+    ports:
+      - "6380:6380"
+    volumes:
+      - redis_data:/data
+
+  minio:
+    image: quay.io/minio/minio:latest
+    command: server --console-address ":9001" /minio_data
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+      MINIO_HTTP_TRACE: /dev/stdout
+    hostname: minio
+    # common healthcheck settings found online
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:12000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    ports:
+      - 12000:9000
+      - 12001:9001
+    volumes:
+      - minio_data:/minio_data

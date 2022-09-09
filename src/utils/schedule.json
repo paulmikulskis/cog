@@ -1,0 +1,10 @@
+{
+  "MyFirstWorkflow": {
+    "cron": "* * * * *",
+    "functionName": "dispoDump",
+    "reqBody": {
+      "miles": 5
+    },
+    "calls": null
+  }
+}
