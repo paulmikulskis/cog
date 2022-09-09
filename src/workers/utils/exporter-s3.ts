@@ -47,17 +47,17 @@ export const uploadToS3 = (data: any, key: string, bucketName = "dutchiedata"): 
   })
 }
 
-export const genDispoDumpKey = (): string => {
+export const genStoreDumpKey = (): string => {
   const dat = format(new Date(), "MM-dd-yyyy")
-  return `dispoDump/${dat}.json`
+  return `StoreDump/${dat}.json`
 }
 
-export const genDispoMenuDumpKey = (dispensaryId: string): string => {
+export const genStoreMenuDumpKey = (storeId: string): string => {
   const dat = format(new Date(), "MM-dd-yyyy:HH")
-  return `menuDump/${dispensaryId}/${dat}.json`
+  return `menuDump/${storeId}/${dat}.json`
 }
 
-export const genDispoLiveMenuKey = (dispensaryId: string): string => {
+export const genStoreLiveMenuKey = (storeId: string): string => {
   const dat = format(new Date(), "MM-dd-yyyy:HH:mm")
-  return `dispoDumpLive/${dispensaryId}/${dat}.json`
+  return `StoreDumpLive/${storeId}/${dat}.json`
 }

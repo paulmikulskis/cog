@@ -1,25 +1,17 @@
 /* eslint-disable prettier/prettier */
 import { z } from "zod"
 
-export const DispoDumpBody = z.object({
-  nearLat: z.number(),
-  nearLng: z.number(),
-  distance: z.number(),
-  justIds: z.boolean().optional(),
+export const exampleFunctionBody = z.object({
+  miles: z.number(),
 })
 
-export const MenuDumpBody = z.object({
-  dispensaryId: z.string(),
-})
-
-export const DispensaryInfoDumpBody = z.object({
-  dispensaryId: z.string(),
+export const exampleFunctionBody2 = z.object({
+  miles: z.number(),
 })
 
 export const scheduleableFunctions = z.union([
-    MenuDumpBody,
-    DispensaryInfoDumpBody,
-    DispoDumpBody
+  exampleFunctionBody,
+  exampleFunctionBody2
   ])
 
 export const SchedulerBody = z.object({
