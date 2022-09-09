@@ -62,12 +62,12 @@ Create a file (if it does not already exist) called `schedule.json` in `/src/uti
 ```
 when `make up` is run, you will notice your Workflow gets scheduled:
 ```
-cannalytica-workers-1 | ...  DEBUG  environment: 'development' 
-cannalytica-api-1     | ...  INFO   redis successfully connected 
-cannalytica-api-1     | ...  INFO   instantiating scheduled workflow 'MyFirstWorkflow' 
-cannalytica-api-1     | ...  INFO   connecting to queue exampleFunc
-cannalytica-api-1     | ...  DEBUG  adding body to queue: {"reqBody":{"miles":5}}
-cannalytica-api-1     | ...  INFO   successfully scheduled workflow 'MyFirstWorkflow', function 'exampleFunc', cron: '* * * * *' 
+cog-workers-1 | ...  DEBUG  environment: 'development' 
+cog-api-1     | ...  INFO   redis successfully connected 
+cog-api-1     | ...  INFO   instantiating scheduled workflow 'MyFirstWorkflow' 
+cog-api-1     | ...  INFO   connecting to queue exampleFunc
+cog-api-1     | ...  DEBUG  adding body to queue: {"reqBody":{"miles":5}}
+cog-api-1     | ...  INFO   successfully scheduled workflow 'MyFirstWorkflow', function 'exampleFunc', cron: '* * * * *' 
 ```
 `schedule.json` gets read upon boot and whatever gets defined here gets scheduled!  One of the more powerful features of Cog is the ability to chain Workflows, which you can find mode detail for later on.
 # Development Example

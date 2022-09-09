@@ -21,7 +21,7 @@ import { jobIdToCron, jobIdToFunctionName, jobIdToUserName, jobIdToWorkflowName,
   await initialize(context)
 
   app.listen(context.env.API_PORT, () => {
-    logger.info(`cannalytica-core-api listening on port ${context.env.API_PORT}`)
+    logger.info(`cog-core-api listening on port ${context.env.API_PORT}`)
   })
 
   app.get("/", (_, res) => res.sendStatus(200))

@@ -39,7 +39,7 @@ export const getQueue = <A>(
   })
 }
 
-export const initCannalyticaCoreQueues = (env: ValidatedEnv): QueueScheduler[] => {
+export const initCogCoreQueues = (env: ValidatedEnv): QueueScheduler[] => {
   return integratedFunctions.map((fun: IntegratedFunction) => {
     return new QueueScheduler(fun.queueName, { connection: connection(env) })
   })

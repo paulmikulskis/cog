@@ -2,7 +2,7 @@
 
 
 aws:
-	export AWS_PROFILE=cannalytica 
+	export AWS_PROFILE=default 
 
 clean:
 	docker compose down -v
@@ -24,7 +24,7 @@ api:
 worker: ## Starts Redis,
 	. ${NVM_DIR}/nvm.sh && nvm use
 	docker compose up -d --remove-orphans redis
-	yarn nodemon --watch './**/*.ts' --exec 'ts-node' src/workers/menuDumper/index.ts
+	yarn nodemon --watch './**/*.ts' --exec 'ts-node' src/workers/exampleFunc/index.ts
 
 jest:
 	. ${NVM_DIR}/nvm.sh && nvm use

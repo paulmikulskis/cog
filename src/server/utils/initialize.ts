@@ -1,4 +1,4 @@
-import { getQueue, initCannalyticaCoreQueues } from "../../workers/utils/queues"
+import { getQueue, initCogCoreQueues } from "../../workers/utils/queues"
 import { Context } from "./context"
 import schedule from "../../utils/schedule.json"
 import { isValidCron } from "cron-validator"
@@ -14,7 +14,7 @@ export const initialize = async (context: Context) => {
   if (context.env.ENVIRONMENT !== "development") {
     console.log(`in development mode`)
   }
-  initCannalyticaCoreQueues(context.env)
+  initCogCoreQueues(context.env)
   const sch = Object.entries(schedule)
   for (let i = 0; i < sch.length; i++) {
     const entry = sch[i]
