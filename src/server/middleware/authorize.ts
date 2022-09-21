@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { respondWith } from "../utils/server_utils";
 import { app } from "firebase-admin/lib/firebase-namespace-api";
 
-const authToken = (firebaseAdmin: app.App | undefined) => {
+const authToken = (firebaseAdmin: app.App) => {
   return (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers["authorization"]?.split(" ");
     const admin = authHeader && authHeader[0];
@@ -10,7 +10,6 @@ const authToken = (firebaseAdmin: app.App | undefined) => {
     if (admin === "admin") {
       /* 
       Logic 1 goes here
-
 
       */
       return next();
@@ -31,9 +30,8 @@ const authToken = (firebaseAdmin: app.App | undefined) => {
         /* 
          Logic 2 goes here
 
-
           */
-        next();
+        return next();
       })
       .catch(() => {
         return res.send(respondWith(403, `Invalid Token`));

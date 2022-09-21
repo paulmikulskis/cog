@@ -39,8 +39,9 @@ import initializeFirebase from "./utils/firebase";
 
   app.get("/", (_, res) => res.sendStatus(200));
 
-  //Initialize firebase and // Auth middleware
+  //Initialize firebase and Auth middleware
   const firebaseAdmin = initializeFirebase();
+  if (!firebaseAdmin) return;
   app.use(authToken(firebaseAdmin));
 
   app.post<{ parameter: string }>("/api/:parameter", async (req, res) => {
