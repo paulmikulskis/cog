@@ -29,6 +29,7 @@
     "zod": "^3.17.10"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@aws-sdk/client-s3": "^3.16.0",
     "@aws-sdk/types": "^3.15.0",
     "@graphql-codegen/typescript-graphql-request": "^4.5.3",
