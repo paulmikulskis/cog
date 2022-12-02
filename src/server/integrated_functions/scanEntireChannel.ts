@@ -12,16 +12,18 @@ export const exampleFunc: IntegratedFunction = createIntegratedFunction(
   async (context, body) => {
     const scamEntireChannelQueue = getQueue<ScanEntireChannelBodyType>(context.mqConnection, "scanEntireChannel")
 
-    await scamEntireChannelQueue.add(`customId.scanEntireChannel`, {
+    await scamEntireChannelQueue.add(`${body.userId}.scanEntireChannel`, {
       reqBody: {
-        max_comments: body.max_comments || 10000,
-        filter_mode: body.filter_mode || "sensitivesmart",
-        filter_subMode: body.filter_subMode || "regex",
-        removal_type: body.removal_type || "deletespam",
-        skip_deletion: body.skip_deletion || false,
+        // userId will correspond to the Firebase User Auth ID
+        userId: body.userId,
+        maxComments: body.maxComments || 10000,
+        filterMode: body.filterMode || "sensitivesmart",
+        filterSubMode: body.filterSubMode || "regex",
+        removalType: body.removalType || "deletespam",
+        skipDeletion: body.skipDeletion || false,
       },
       calls: null,
     })
-    return respondWith(200, `added job to queue 'scanEntireChannel'`)
+    return respondWith(200, `added job to queue 'scanEntireChannel for user "${body.userId}"'`)
   }
 )
