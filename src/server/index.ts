@@ -102,7 +102,12 @@ import { jobIdToCron, jobIdToFunctionName, jobIdToUserName, jobIdToWorkflowName,
               },
             })
           : jobList.push({
-              [workflowName]: { functionName, cron, reqBody: jobDetails?.data.reqBody, calls: jobDetails?.data.calls },
+              [workflowName]: {
+                functionName,
+                cron,
+                reqBody: jobDetails?.data.reqBody,
+                calls: jobDetails?.data.calls,
+              },
             })
       }
       jobs.push(jobList)
